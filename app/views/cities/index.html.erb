@@ -1,0 +1,4 @@
+<%= form_tag import_cities_path, method: :post do %>
+  <%= select_tag :state_sigla, options_for_select(['PR', 'RS', 'SC']), prompt: 'Select a state' %>
+  <%= submit_tag 'Import' %>
+<% end %>

@@ -1,0 +1,27 @@
+<h1>Cities</h1>
+
+<% if @imported_cities.any? %>
+  <h2>Cities:</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>State</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @imported_cities.order(:name).each do |city| %>
+        <tr>
+          <td><%= city.name %></td>
+          <td><%= city&.state&.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No cities were imported.</p>
+<% end %>
+
+<p>Total: <%= @imported_cities.count %></p>
+
+<%= link_to 'Back', root_path %>
