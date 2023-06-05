@@ -8,7 +8,9 @@ states_data = response.code == 200 ? JSON.parse(response.body) : []
 southern_states_data = states_data.select { |state| state.dig('regiao', 'sigla') == 'S' }
 
 success_count = southern_states_data.count do |state_data|
-  State.create(name: state_data['nome'], country: state_data['pais']).valid?
+  state = State.find_or_initialize_by(name: state_data['nome'])
+  state.save
+  state.valid?
 end
 
 status = response.code == 200 && success_count == southern_states_data.length ? 'success' : 'error'
