@@ -10,28 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_05_181526) do
-
+ActiveRecord::Schema.define(version: 20_230_605_181_526) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "cities", force: :cascade do |t|
-    t.bigint "state_id"
-    t.string "name", null: false
-    t.string "acronym", null: false
-    t.string "country"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["state_id"], name: "index_cities_on_state_id"
+  create_table 'cities', force: :cascade do |t|
+    t.bigint 'state_id'
+    t.string 'name', null: false
+    t.string 'acronym', null: false
+    t.string 'country'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['state_id'], name: 'index_cities_on_state_id'
   end
 
-  create_table "states", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "acronym", null: false
-    t.integer "country", default: 1, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'states', force: :cascade do |t|
+    t.string 'name', null: false
+    t.string 'acronym', null: false
+    t.integer 'country', default: 1, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  add_foreign_key "cities", "states"
+  add_foreign_key 'cities', 'states'
 end

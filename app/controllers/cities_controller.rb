@@ -1,8 +1,7 @@
 class CitiesController < ApplicationController
   before_action :find_state_by_acronym, only: :import
 
-  def index
-  end
+  def index; end
 
   def show_imported
     @imported_cities = City.all
@@ -51,7 +50,8 @@ class CitiesController < ApplicationController
         name: city_data['nome'],
         acronym: @state.acronym,
         country: @state.country,
-        state: @state)
+        state: @state
+      )
       city.save if city.valid?
     end
   end
