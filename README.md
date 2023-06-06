@@ -26,9 +26,11 @@ Another prompt run:
 
 2. cd /app
 
-3. bundle exec rake db:migrate
+3. docker-compose run app bin/rails db:migrate RAILS_ENV=development
 
-4. bundle exec rake db:seed
+4. docker-compose exec app bash
+
+5. bundle exec rake db:seed
 
 ## Conclusion
 

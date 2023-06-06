@@ -1,0 +1,66 @@
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+  }
+
+  h1, p, table {
+    margin-bottom: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  .back-link {
+    text-decoration: none;
+    color: #000;
+    padding: 10px 20px;
+    background-color: #ccc;
+    border-radius: 5px;
+  }
+</style>
+
+<div class="container">
+  <h1>Search Results</h1>
+
+  <% if @matching_cities.any? %>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>State</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @matching_cities.each do |city| %>
+          <tr>
+            <td><%= city.name %></td>
+            <td><%= city.state.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No matching cities found.</p>
+  <% end %>
+
+  <p>
+    <%= link_to 'Back', show_imported_cities_path, class: 'back-link' %>
+  </p>
+</div>

@@ -1,27 +1,103 @@
-<h1>Cities</h1>
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
 
-<% if @imported_cities.any? %>
-  <h2>Cities:</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>State</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @imported_cities.order(:name).each do |city| %>
+  h1, h2, p, table {
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+
+
+  input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type="text"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  p {
+    font-weight: bold;
+  }
+
+  .back-link {
+    text-decoration: none;
+    color: #000;
+    padding: 10px 20px;
+    background-color: #ccc;
+    border-radius: 5px;
+  }
+</style>
+
+  <h1>Cities</h1>
+
+  <%= form_tag cities_search_path, method: :get do %>
+    <%= text_field_tag :name, params[:name], placeholder: 'Search by city name' %>
+    <%= text_field_tag :state, params[:state], placeholder: 'Search by country' %>
+    <%= submit_tag 'Search' %>
+  <% end %>
+
+
+<div class="container">
+
+  <h2>Show Imported Cities</h2>
+
+  <% if @imported_cities.any? %>
+    <table>
+      <thead>
         <tr>
-          <td><%= city.name %></td>
-          <td><%= city&.state&.name %></td>
+          <th>Name</th>
+          <th>State</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>No cities were imported.</p>
-<% end %>
+      </thead>
+      <tbody>
+        <% @imported_cities.order(:name).each do |city| %>
+          <tr>
+            <td><%= city.name %></td>
+            <td><%= city&.state&.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No cities were imported.</p>
+  <% end %>
 
-<p>Total: <%= @imported_cities.count %></p>
+  <p>Total: <%= @imported_cities.count %></p>
 
-<%= link_to 'Back', root_path %>
+  <%= link_to 'Back', root_path, class: 'back-link' %>
+</div>
