@@ -34,6 +34,12 @@ Another prompt run:
 
 5. bundle exec rake db:seed
 
+## Step 3: Run tests
+
+1. docker-compose run app rails db:create RAILS_ENV=test
+
+2. docker-compose run app rspec
+
 ## Conclusion
 
 You now have your Rails application up and running using Docker, with database migrations applied and initial data generated from the seeds file.
