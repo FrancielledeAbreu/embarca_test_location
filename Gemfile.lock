@@ -249,7 +249,7 @@ GEM
     thor (1.2.2)
     thread_safe (0.3.6)
     thread_safe (0.3.6-java)
-    tilt (2.1.0)
+    tilt (2.2.0)
     timeout (0.3.2)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
