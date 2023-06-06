@@ -12,23 +12,23 @@ Before proceeding, make sure you have Docker and Docker Compose installed in you
 
 2. Navigate to the root directory of your project.
 
-3. RUN bundle install
-
 ## Step 2: Environment Docker Setup
 
 In the terminal, run the following command to create and start the containers:
 
-1. docker-compose up
+1. docker-compose build --no-cache
+
+2. docker-compose up
 
 Another prompt run:
 
-2. docker-compose exec app bash
+1. docker-compose exec app bash
 
-3. cd /app
+2. cd /app
 
-4. bundle exec rake db:migrate
+3. bundle exec rake db:migrate
 
-5. bundle exec rake db:seed
+4. bundle exec rake db:seed
 
 ## Conclusion
 
