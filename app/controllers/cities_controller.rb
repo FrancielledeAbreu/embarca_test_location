@@ -26,6 +26,16 @@ class CitiesController < ApplicationController
     end
   end
 
+  def search
+    name_param = params[:name].to_s.downcase
+    state_param = params[:state].to_s.downcase
+
+    city_query = City.where('lower(cities.name) LIKE ?', "%#{name_param}%")
+    state_query = State.where('lower(states.name) LIKE ?', "%#{state_param}%")
+
+    @matching_cities = city_query.joins(:state).merge(state_query)
+  end
+
   private
 
   def find_state_by_acronym
