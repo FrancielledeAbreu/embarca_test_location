@@ -2,6 +2,8 @@
 
 This documentation will guide you through the steps required to run your Rails application using Docker. This includes setting up the Docker environment, running database migrations, and generating initial data using the seeds file.
 
+![EMBARCA_TEST](./app/assets/images/embarca_test.gif)
+
 ## Prerequisites
 
 Before proceeding, make sure you have Docker and Docker Compose installed in your development environment.
